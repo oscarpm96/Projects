@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SUPPLYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MVC_Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="IdSexo" Type="int" Nullable="false" />
+    <Property Name="BHabilitado" Type="int" />
+    <Property Name="Telefono" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MVC_Marca">
+    <Key>
+      <PropertyRef Name="IdMarca" />
+    </Key>
+    <Property Name="IdMarca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="BHabilitado" Type="int" />
+  </EntityType>
+  <EntityType Name="MVC_Sexo">
+    <Key>
+      <PropertyRef Name="IdSexo" />
+    </Key>
+    <Property Name="IdSexo" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" />
+    <Property Name="BHabilitado" Type="int" />
+  </EntityType>
+  <EntityType Name="MVC_Sucursal2">
+    <Key>
+      <PropertyRef Name="IdSucursal" />
+    </Key>
+    <Property Name="IdSucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Direccion" Type="varchar" MaxLength="200" />
+    <Property Name="Telefono" Type="varchar" MaxLength="10" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="FechaApertura" Type="date" />
+    <Property Name="BHabilitado" Type="int" />
+  </EntityType>
+  <Association Name="FK_MVC_Cliente_Sexo">
+    <End Role="MVC_Sexo" Type="Self.MVC_Sexo" Multiplicity="1" />
+    <End Role="MVC_Cliente" Type="Self.MVC_Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MVC_Sexo">
+        <PropertyRef Name="IdSexo" />
+      </Principal>
+      <Dependent Role="MVC_Cliente">
+        <PropertyRef Name="IdSexo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SUPPLYModelStoreContainer">
+    <EntitySet Name="MVC_Cliente" EntityType="Self.MVC_Cliente" Schema="supply" Table="MVC.Cliente" store:Type="Tables" />
+    <EntitySet Name="MVC_Marca" EntityType="Self.MVC_Marca" Schema="supply" Table="MVC.Marca" store:Type="Tables" />
+    <EntitySet Name="MVC_Sexo" EntityType="Self.MVC_Sexo" Schema="supply" Table="MVC.Sexo" store:Type="Tables" />
+    <EntitySet Name="MVC_Sucursal2" EntityType="Self.MVC_Sucursal2" Schema="supply" Table="MVC.Sucursal2" store:Type="Tables" />
+    <AssociationSet Name="FK_MVC_Cliente_Sexo" Association="Self.FK_MVC_Cliente_Sexo">
+      <End Role="MVC_Sexo" EntitySet="MVC_Sexo" />
+      <End Role="MVC_Cliente" EntitySet="MVC_Cliente" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SUPPLYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SUPPLYEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MVC_Cliente" EntityType="SUPPLYModel.MVC_Cliente" />
+    <EntitySet Name="MVC_Marca" EntityType="SUPPLYModel.MVC_Marca" />
+    <EntitySet Name="MVC_Sexo" EntityType="SUPPLYModel.MVC_Sexo" />
+    <EntitySet Name="MVC_Sucursal2" EntityType="SUPPLYModel.MVC_Sucursal2" />
+    <AssociationSet Name="FK_MVC_Cliente_Sexo" Association="SUPPLYModel.FK_MVC_Cliente_Sexo">
+      <End Role="MVC_Sexo" EntitySet="MVC_Sexo" />
+      <End Role="MVC_Cliente" EntitySet="MVC_Cliente" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MVC_Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IdSexo" Type="Int32" Nullable="false" />
+    <Property Name="BHabilitado" Type="Int32" />
+    <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="MVC_Sexo" Relationship="SUPPLYModel.FK_MVC_Cliente_Sexo" FromRole="MVC_Cliente" ToRole="MVC_Sexo" />
+  </EntityType>
+  <EntityType Name="MVC_Marca">
+    <Key>
+      <PropertyRef Name="IdMarca" />
+    </Key>
+    <Property Name="IdMarca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BHabilitado" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MVC_Sexo">
+    <Key>
+      <PropertyRef Name="IdSexo" />
+    </Key>
+    <Property Name="IdSexo" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BHabilitado" Type="Int32" />
+    <NavigationProperty Name="MVC_Cliente" Relationship="SUPPLYModel.FK_MVC_Cliente_Sexo" FromRole="MVC_Sexo" ToRole="MVC_Cliente" />
+  </EntityType>
+  <EntityType Name="MVC_Sucursal2">
+    <Key>
+      <PropertyRef Name="IdSucursal" />
+    </Key>
+    <Property Name="IdSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaApertura" Type="DateTime" Precision="0" />
+    <Property Name="BHabilitado" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_MVC_Cliente_Sexo">
+    <End Type="SUPPLYModel.MVC_Sexo" Role="MVC_Sexo" Multiplicity="1" />
+    <End Type="SUPPLYModel.MVC_Cliente" Role="MVC_Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MVC_Sexo">
+        <PropertyRef Name="IdSexo" />
+      </Principal>
+      <Dependent Role="MVC_Cliente">
+        <PropertyRef Name="IdSexo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

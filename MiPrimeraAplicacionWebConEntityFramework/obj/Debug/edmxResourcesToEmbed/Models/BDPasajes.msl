@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SUPPLYModelStoreContainer" CdmEntityContainer="SUPPLYEntities">
+    <EntitySetMapping Name="MVC_Cliente">
+      <EntityTypeMapping TypeName="SUPPLYModel.MVC_Cliente">
+        <MappingFragment StoreEntitySet="MVC_Cliente">
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="BHabilitado" ColumnName="BHabilitado" />
+          <ScalarProperty Name="IdSexo" ColumnName="IdSexo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MVC_Marca">
+      <EntityTypeMapping TypeName="SUPPLYModel.MVC_Marca">
+        <MappingFragment StoreEntitySet="MVC_Marca">
+          <ScalarProperty Name="BHabilitado" ColumnName="BHabilitado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MVC_Sexo">
+      <EntityTypeMapping TypeName="SUPPLYModel.MVC_Sexo">
+        <MappingFragment StoreEntitySet="MVC_Sexo">
+          <ScalarProperty Name="BHabilitado" ColumnName="BHabilitado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdSexo" ColumnName="IdSexo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MVC_Sucursal2">
+      <EntityTypeMapping TypeName="SUPPLYModel.MVC_Sucursal2">
+        <MappingFragment StoreEntitySet="MVC_Sucursal2">
+          <ScalarProperty Name="BHabilitado" ColumnName="BHabilitado" />
+          <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
